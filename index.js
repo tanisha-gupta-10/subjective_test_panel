@@ -21,7 +21,7 @@ const db = mysql.createPool({
   connectionLimit: 2,
   host: "mysql.railway.internal", // Replace with actual host
   user: "root",
-  password: "qzfewHYcJuNGKCmNvpUUzWvAdIBTkWEr",
+  password: "vgivmiNUPkCXQYpxzGTIbSHOjbQjxAPX",
   database: "railway",
   debug: false
 });
