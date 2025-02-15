@@ -96,7 +96,7 @@ app.get("/", (req, res) => {
   //   res.render("questions", { data: results });
   // });
 
-  res.render("questions");
+  res.render("login");
 
 });
 
