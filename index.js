@@ -62,42 +62,24 @@ db.query("SELECT 1", (err) => {
 
 // Routes
 app.get("/", (req, res) => {
-  // const query = `
-  //   SELECT sq.class_id, slc.name, ct.category, l.name as lang, b.name as board,
-  //          sq.user_id, u.name as user_name, sq.created_at, ctt.category as sub_category_name
-  //   FROM vidyakul.subjective_questions sq
-  //   JOIN single_live_class slc ON sq.class_id = slc.id
-  //   JOIN categories ct ON slc.subject_id = ct.id
-  //   JOIN languages l ON slc.language_id = l.id
-  //   JOIN board b ON slc.board_id = b.id
-  //   JOIN users u ON u.id = sq.user_id
-  //   JOIN categories ctt ON slc.sub_category_id = ctt.id;
-  // `;
-
-  // db.query(query, (err, results) => {
-  //   if (err) {
-  //     console.error("Error fetching data:", err);
-  //     return res.status(500).send("Database query error");
-  //   }
-
-  //   results.forEach(row => {
-  //     const date = new Date(row.created_at);
-  //     row.formattedDate = date.toLocaleString("en-GB", {
-  //       year: "numeric",
-  //       month: "short",
-  //       day: "2-digit",
-  //       hour: "2-digit",
-  //       minute: "2-digit",
-  //       second: "2-digit",
-  //       hour12: false
-  //     });
-  //   });
-
-  //   res.render("questions", { data: results });
-  // });
-
   res.render("login");
 
+});
+
+app.post("/signup", (req, res) => {
+  const { name, phoneNumber, email, password } = req.body;
+  db.query(
+    "INSERT INTO users (name, phoneNumber , email, password) VALUES (?,?)",
+    [name, phoneNumber, email, password],
+    (err, result) => {
+      if (err) {
+        console.error("Error inserting user:", err);
+        res.status(500).send("Error inserting user");
+      }
+      else if (result) {
+        res.redirect("/dashboard");
+      }
+    });
 });
 
 // Start Server
