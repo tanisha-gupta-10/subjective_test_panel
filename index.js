@@ -18,9 +18,9 @@ app.set("view engine", "ejs");
 
 // Create MySQL Connection
 const connection = mysql.createConnection({
-  host: "localhost",
+  host: "mysql.railway.internal",
   user: "root",
-  password: "",
+  password: "qzfewHYcJuNGKCmNvpUUzWvAdIBTkWEr",
 });
 
 // Connect to MySQL and Create Database
@@ -44,10 +44,10 @@ connection.connect((err) => {
 // Create MySQL Connection Pool
 const db = mysql.createPool({
   connectionLimit: 2,
-  host: "localhost",
+  host: "mysql.railway.internal",
   user: "root",
-  password: "",
-  database: "restraunt",
+  password: "qzfewHYcJuNGKCmNvpUUzWvAdIBTkWEr",
+  database: "railway",
   debug: false
 });
 
